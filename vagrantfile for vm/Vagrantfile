@@ -1,0 +1,18 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    config.vm.define "lab-vm"
+    config.vm.box = "generic/debian12"
+    config.vm.hostname = "lab-vm"
+    config.ssh.insert_key = false
+
+    # Virtualbox config
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 2
+      v.customize ["modifyvm", :id, "--nictype1", "virtio"]
+    end
+
+    config.vm.network :private_network, ip: "192.168.56.10"
+end
