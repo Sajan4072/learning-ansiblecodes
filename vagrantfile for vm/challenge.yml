@@ -1,0 +1,16 @@
+---
+  - name: "challenge playbook"
+    hosts: localhost
+    become: yes 
+
+    tasks:
+      - name: "ping localhost"
+        ping:
+      
+      - name: "details of text files"
+        find:
+          path: /home/vagrant/challenge
+          file_type: file
+
+
+
