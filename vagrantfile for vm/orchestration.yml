@@ -1,0 +1,23 @@
+--- 
+  - name: "orchestration Example using Ansible"
+    hosts: logicservers
+    become: yes
+    serial:   1
+
+    tasks:
+
+    - name: "shutdown server"
+      debug:
+        msg: "shutdown {{ inventory_hostname }}"
+    
+    - name: "upgrade firmware"
+      debug:
+        msg: "upgrade {{ inventory_hostname }}"
+
+    - name: "start server"
+      debug:
+        msg: "star {{ inventory_hostname }}"
+    
+    - name: "verify the server"
+      debug:
+        msg: "verify {{ inventory_hostname }}"

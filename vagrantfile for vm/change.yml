@@ -1,0 +1,30 @@
+---
+  - name: " React with change Example"
+    hsots: logicservers
+    serial: 1
+
+    tasks:
+
+    - name: "install nginx"
+      debug:
+        msg: "install nginx on: {{ inventory_hostname }}"
+      
+    - name: "upgrade nginx"
+      debug: 
+        msg: "upgrade nginx on: {{ inventory_hostname }}"
+
+    - name: "configure nginx"
+      debug: 
+        msg: "start {{ inventory_hostname }}"
+      notify: restart nginx
+      changed_when: True
+
+    - name: "verify nginx"
+      debug:
+        msg: "verify: {{ inventory_hostname }}"
+
+    handlers:
+    - name: restart nginx
+      debug:
+        msg: "called handler for restart"
+
